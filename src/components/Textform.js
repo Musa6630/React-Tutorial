@@ -30,11 +30,8 @@ export default function Textform(props) {
   };
 
   const handleCopy = () => {
-    var text = document.getElementById("myBox");
-    text.select();
-    document.getSelection().removeAllRanges();
-    navigator.clipboard.writeText(text.value);
-    props.showAlert("Your text has been copied", "success");
+    navigator.clipboard.writeText(Text);
+    // props.showAlert("Your text has been copied", "success");
   };
   const handleExtraSpaces = () => {
     let newText = Text.split(/[ ]+/);
@@ -135,7 +132,7 @@ export default function Textform(props) {
         <p>
           Your Sentence Has{" "}
           {
-            Text.split(" ").filter((element) => {
+            Text.split(/\s+/).filter((element) => {
               return element.length !== 0;
             }).length
           }{" "}
